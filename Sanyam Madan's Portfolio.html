@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanyam Madan | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151d30;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --border-color: #24324f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--text-secondary);
+        }
+
+        /* Section Settings */
+        section {
+            margin-bottom: 80px;
+            scroll-margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Experience & Education Timelines */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card-title h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card-subtitle {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .card-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-body ul {
+            list-style-type: none;
+        }
+
+        .card-body li {
+            position: relative;
+            padding-left: 18px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .card-body li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Projects Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Skills Layout */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .skill-group h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 35px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Responsive Layout fixes */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .card-date {
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Navbar -->
+        <nav>
+            <a href="#" class="logo">Sanyam Madan's Portfolio </a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <header class="hero">
+            <h1>Hello, I'm <span>Sanyam Madan</span></h1>
+            <p>A Frontend Developer and B.Tech Computer Science & Engineering candidate focused on building high-performance, clean, and beautifully interactive web application interfaces.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Say Hello</a>
+                <a href="#projects" class="btn btn-secondary">View Work</a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    I am an engineering candidate with a core focus on technology, interaction design, and progressive web performance ecosystems. Through my academic path and active development practices, I turn architectural design requirements into scalable front-end solutions.
+                </p>
+                <p style="color: var(--text-secondary);">
+                    I bridge structural layout layouts with client-side reactive components. Whether managing component state behaviors or structuring relational databases, I value precision, modular clean code compilation, and fluid UX workflows.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>Frontend Developer Intern</h3>
+                            <div class="card-subtitle">VELoop Rewards</div>
+                        </div>
+                        <span class="card-date">Sep 2026 - Present</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Developed and optimized responsive web dashboards using React.js to improve mobile layout navigation.</li>
+                            <li>Built reusable UI components for consumer-facing rewards features, integrating states with backend APIs.</li>
+                            <li>Translated complex wireframes into interactive, accessible frontend components to boost user engagement.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>Web Development Intern</h3>
+                            <div class="card-subtitle">EWB Edutech Private Limited</div>
+                        </div>
+                        <span class="card-date">Sep 2026 - Present</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Crafted clean, semantic HTML5 structures to ensure robust content architecture across digital learning web pages.</li>
+                            <li>Styled responsive user interfaces using CSS3, implementing media queries to deliver layouts optimized for mobile and desktop screens.</li>
+                            <li>Collaborated with team members to resolve cross-browser rendering inconsistencies and layout bugs, improving overall visual layout uniformity.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>Volunteer / Co-host / Anchor</h3>
+                            <div class="card-subtitle">ICDAM Virtual Sessions</div>
+                        </div>
+                        <span class="card-date">Academic Sessions</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Supported virtual academic sessions by admitting participants, coordinating speakers, and managing session flow operations.</li>
+                            <li>Worked with organizers and fellow volunteers in a live online environment to maintain optimal coordination dynamics.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>B.Tech - Computer Science & Engineering</h3>
+                        <div class="card-subtitle">Dr. Akhilesh Das Gupta Institute of Professional Studies (GGSIPU)</div>
+                    </div>
+                    <span class="card-date">Expected July 2028 | 3rd Year</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+       <section id="projects" style="padding: 40px 0;">
+    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 24px; border-bottom: 2px solid #3182ce; display: inline-block; padding-bottom: 4px;">Projects</h2>
+    
+    <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 16px;">
+        
+        <!-- CARD 1: TextUtils -->
+        <div class="project-card" 
+             onclick="window.open('https://text-utils-7r9r-six.vercel.app/', '_blank')" 
+             style="background: #1a202c; border: 1px solid #2d3748; border-radius: 8px; padding: 24px; cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0 0 12px 0;">TextUtils</h3>
+                <p style="font-size: 0.95rem; color: #a0aec0; line-height: 1.6; margin: 0;">
+                    Developed a React-based text utility application with interactive text-processing features, practicing components, state handling, user interactions, and a clean functional interface.
+                </p>
+            </div>
+            <div class="tags" style="margin-top: 20px; display: flex; gap: 8px;">
+                <span class="tag" style="font-size: 0.8rem; background: #2d3748; color: #63b3ed; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">React</span>
+                <span class="tag" style="font-size: 0.8rem; background: #2d3748; color: #63b3ed; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">JavaScript</span>
+            </div>
+        </div>
+
+        <!-- CARD 2: Amazon Clone -->
+        <div class="project-card" 
+             onclick="window.open('https://amazonclone-lime-sigma.vercel.app/', '_blank')" 
+             style="background: #1a202c; border: 1px solid #2d3748; border-radius: 8px; padding: 24px; cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0 0 12px 0;">Amazon Clone</h3>
+                <p style="font-size: 0.95rem; color: #a0aec0; line-height: 1.6; margin: 0;">
+                    Built a desktop-focused e-commerce interface inspired by Amazon, implementing structured product sections, navigation, search/header layouts, and Flexbox-based layout structures.
+                </p>
+            </div>
+            <div class="tags" style="margin-top: 20px; display: flex; gap: 8px;">
+                <span class="tag" style="font-size: 0.8rem; background: #2d3748; color: #63b3ed; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">HTML5</span>
+                <span class="tag" style="font-size: 0.8rem; background: #2d3748; color: #63b3ed; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">CSS3</span>
+            </div>
+        </div>
+
+        <!-- CARD 3: YouTube Clone -->
+        <div class="project-card" 
+             onclick="window.open('https://youtubeclone-eight-nu.vercel.app/', '_blank')" 
+             style="background: #1a202c; border: 1px solid #2d3748; border-radius: 8px; padding: 24px; cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0 0 12px 0;">YouTube Clone</h3>
+                <p style="font-size: 0.95rem; color: #a0aec0; line-height: 1.6; margin: 0;">
+                    Created a YouTube-inspired front-end interface to practice robust layout structures, layout alignment, custom styling architectures, and organized presentation assets.
+                </p>
+            </div>
+            <div class="tags" style="margin-top: 20px; display: flex; gap: 8px;">
+                <span class="tag" style="font-size: 0.8rem; background: #2d3748; color: #63b3ed; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">HTML5</span>
+                <span class="tag" style="font-size: 0.8rem; background: #2d3748; color: #63b3ed; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">CSS3</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                
+                <div class="skill-group">
+                    <h4>Front-End Development</h4>
+                    <div class="skill-badges">
+                        <div class="badge">HTML5</div>
+                        <div class="badge">CSS3</div>
+                        <div class="badge">JavaScript (ES6+)</div>
+                        <div class="badge">React.js</div>
+                        <div class="badge">Responsive Web Design</div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Database Management</h4>
+                    <div class="skill-badges">
+                        <div class="badge">MySQL</div>
+                        <div class="badge">DBMS Concepts</div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Tools & Frameworks</h4>
+                    <div class="skill-badges">
+                        <div class="badge">VS Code</div>
+                        <div class="badge">Git</div>
+                        <div class="badge">GitHub</div>
+                        <div class="badge">Version Control</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>Whether you want to discuss a frontend role, review code architectures, or talk about open web positions, feel free to drop a message!</p>
+                <div class="contact-links">
+                    <a href="mailto:sanyam.madan.04496203124@adgips.ac.in" class="contact-item">📧 Email</a>
+                    <a href="https://www.linkedin.com/in/sanyam-madan-099781280" class="contact-item" target="_blank">🔗 LinkedIn</a>
+                    <a href="https://github.com/sanyam-madan" class="contact-item" target="_blank">💻 GitHub</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

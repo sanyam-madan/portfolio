@@ -353,6 +353,85 @@
                 margin-top: 4px;
             }
         }
+        /* ==========================================================================
+   FORM RESPONSIVE & SPACING FIX
+   ========================================================================== */
+
+/* The main container box for the form */
+.visual-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Creates perfect vertical spacing between fields */
+    text-align: left;
+}
+
+/* Individual field container blocks */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Forces inputs to go below the label text */
+    align-items: flex-start;
+    width: 100%;
+    gap: 0.5rem; /* Spacing between label and its input box */
+}
+
+/* Form labels styling */
+.form-group label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff; /* Matches your white headers */
+}
+
+/* Inputs and Textarea styling override */
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #111827; /* Dark slate background matching your theme */
+    border: 1px solid #1f2937; /* Subtle border */
+    border-radius: 8px; /* Smooth rounded corners */
+    outline: none;
+    box-sizing: border-box; /* Crucial: stops layout overflow */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Smooth glow effect when user clicks into an input field */
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #3b82f6; /* Accent blue glow border */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Send Message Button layout match */
+.visual-form button[type="submit"] {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+/* Center social interaction buttons underneath the form wrapper */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+footer {
+    background-color: var(--primary-color);
+    color: #94a3b8;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+}
+
     </style>
 </head>
 <body>
@@ -566,6 +645,23 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <p>Whether you want to discuss a frontend role, review code architectures, or talk about open web positions, feel free to drop a message!</p>
+                <form action="https://formspree.io/f/mbgdzbdg" method="POST" class="visual-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="visitor_name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" placeholder="Your Email Address" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="visitor_message" rows="4" placeholder="Your Message Here" required></textarea>
+        </div>
+        
+        <input type="hidden" name="_subject" value="New Portfolio Contact Submission!">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
                 <div class="contact-links">
                     <a href="mailto:sanyam.madan.04496203124@adgips.ac.in" class="contact-item">📧 Email</a>
                     <a href="https://www.linkedin.com/in/sanyam-madan-099781280" class="contact-item" target="_blank">🔗 LinkedIn</a>
@@ -575,6 +671,8 @@
         </section>
 
     </div>
-
+ <footer>
+        <p>&copy; 2026 Sanyam Madan. All rights reserved.</p>
+    </footer>
 </body>
 </html>
